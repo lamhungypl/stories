@@ -1,0 +1,1 @@
+{"translations":{"AVRl6ij3kje":"\u0110\u00e3 t\u1eaft","AOlGHVa_PET":"\u0110\u00e3 b\u00e2\u0323t"},"virtual_modules":["getListCellAddOn.react$fbt_virtual"]}

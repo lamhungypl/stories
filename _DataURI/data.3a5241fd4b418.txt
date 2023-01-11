@@ -1,0 +1,1 @@
+chrome-extension://gdniinfdlmmmjpnhgnkmfpffipenjljo/message-types.js
