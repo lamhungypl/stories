@@ -3,91 +3,117 @@ __d(
   [],
   function (a, b, c, d, e, f) {
     'use strict';
-    var g = 8;
-    function h() {
+    const SOME_CONSTANT = 8;
+
+    function getDefault() {
       return { blue: 0, clusterSize: 0, green: 0, red: 0 };
     }
-    function i(a, b, c, d) {
+    function rgbOffset(color, red, green, blue) {
       return (
-        (a.red - b) * (a.red - b) +
-        (a.green - c) * (a.green - c) +
-        (a.blue - d) * (a.blue - d)
+        (color.red - red) * (color.red - red) +
+        (color.green - green) * (color.green - green) +
+        (color.blue - blue) * (color.blue - blue)
       );
     }
-    function j() {
-      var a = 0,
-        b = 255 / 4,
-        c = new Array(g);
-      for (var d = 0; d < 2; d++)
-        for (var e = 0; e < 2; e++)
-          for (var f = 0; f < 2; f++) {
-            var h = {
-              blue: b * f + b / 2,
+
+    const someFunction = () => {
+      let index = 0;
+      const b = 255 / 4;
+      const arr = new Array(SOME_CONSTANT);
+
+      for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 2; j++) {
+          for (let k = 0; k < 2; k++) {
+            const indexItem = {
+              blue: b * k + b / 2,
               clusterSize: 0,
-              green: b * e + b / 2,
-              red: b * d + b / 2,
+              green: b * j + b / 2,
+              red: b * i + b / 2,
             };
-            c[a] = h;
-            a++;
+            arr[index] = indexItem;
+            index++;
           }
-      return c;
-    }
-    function k(a, b, c) {
-      var d = !1,
-        e = a.length / 4;
-      for (var f = 0, j = 0; f < e; f++, j += 4) {
-        var k = a[j],
-          l = a[j + 1],
-          m = a[j + 2],
-          n = h(),
-          o = Infinity,
-          p = 0;
-        for (var q = 0; q < g; q++) {
-          var r = i(b[q], k, l, m);
-          r < o && ((o = r), (p = q), (n = b[q]));
         }
-        n.clusterSize++;
-        c[f] !== p && ((c[f] = p), (d = !0));
       }
-      return d;
+      return arr;
+    };
+
+    const someCheck = (arr, colorArr, otherArr) => {
+      let check = false;
+      const chunkLength = arr.length / 4;
+
+      for (let i = 0, j = 0; i < chunkLength; i++, j += 4) {
+        const next4 = arr[j];
+        const next5 = arr[j + 1];
+        const next6 = arr[j + 2];
+        let defaultValue = getDefault();
+        let maxValue = Infinity;
+        let someOffset = 0;
+
+        for (let k = 0; k < SOME_CONSTANT; k++) {
+          const someColorWeight = rgbOffset(colorArr[k], next4, next5, next6);
+
+          if (someColorWeight < maxValue) {
+            maxValue = someColorWeight;
+            someOffset = k;
+            defaultValue = colorArr[k];
+          }
+        }
+
+        defaultValue.clusterSize++;
+
+        if (otherArr[i] !== someOffset) {
+          otherArr[i] = someOffset;
+          check = true;
+        }
+      }
+      return check;
+    };
+
+    function doStuff(arr, colorArr, otherArr) {
+      const arr1 = new Array(SOME_CONSTANT);
+      const arr2 = new Array(SOME_CONSTANT);
+      const arr3 = new Array(SOME_CONSTANT);
+      arr1.fill(0);
+      arr2.fill(0);
+      arr3.fill(0);
+
+      const someLength = arr.length / 4;
+
+      for (let i = 0, j = 0; i < someLength; i++, j += 4) {
+        const arrItem1 = arr[j];
+        const arrItem2 = arr[j + 1];
+        const arrItem3 = arr[j + 2];
+        const n = otherArr[i];
+        arr1[n] += arrItem1;
+        arr2[n] += arrItem2;
+        arr3[n] += arrItem3;
+      }
+      for (let k = 0; k < SOME_CONSTANT; k++) {
+        const colorItem = colorArr[k];
+        if (colorItem.clusterSize > 0) {
+          colorItem.red = arr1[k] / colorItem.clusterSize;
+          colorItem.green = arr2[k] / colorItem.clusterSize;
+          colorItem.blue = arr3[k] / colorItem.clusterSize;
+          colorItem.clusterSize = 0;
+        }
+      }
     }
-    function l(a, b, c) {
-      var d = new Array(g),
-        e = new Array(g),
-        f = new Array(g);
-      d.fill(0);
-      e.fill(0);
-      f.fill(0);
-      var h = a.length / 4;
-      for (var i = 0, j = 0; i < h; i++, j += 4) {
-        var k = a[j],
-          l = a[j + 1],
-          m = a[j + 2],
-          n = c[i];
-        d[n] += k;
-        e[n] += l;
-        f[n] += m;
+
+    const defaultFn = (arr) => {
+      const length = arr.length;
+      const colors = someFunction();
+      const someArr = new Array(length);
+      someArr.fill(-1);
+
+      while (someCheck(arr, colors, someArr)) {
+        doStuff(arr, colors, someArr);
       }
-      for (k = 0; k < g; k++) {
-        l = b[k];
-        l.clusterSize > 0 &&
-          ((l.red = d[k] / l.clusterSize),
-          (l.green = e[k] / l.clusterSize),
-          (l.blue = f[k] / l.clusterSize),
-          (l.clusterSize = 0));
-      }
-    }
-    function a(a) {
-      var b = a.length,
-        c = j();
-      b = new Array(b);
-      b.fill(-1);
-      while (k(a, c, b)) l(a, c, b);
-      return c.sort(function (a, b) {
-        return b.clusterSize - a.clusterSize;
+      return colors.sort(function (it1, it2) {
+        return it2.clusterSize - it1.clusterSize;
       });
-    }
-    f['default'] = a;
+    };
+    f['default'] = defaultFn;
   },
   66,
 );
