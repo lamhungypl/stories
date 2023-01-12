@@ -1532,12 +1532,12 @@ __d(
     var h,
       i = d('react');
     e = d('react');
-    var j = e.useCallback,
-      ba = e.useContext,
-      k = e.useEffect,
-      ca = e.useMemo,
-      l = e.useRef,
-      m = e.useState,
+    var useCallback = e.useCallback,
+      useContext = e.useContext,
+      useEffect = e.useEffect,
+      useMemo = e.useMemo,
+      useRef = e.useRef,
+      useState = e.useState,
       n = {
         border: {
           height: 'x5yr21d',
@@ -1657,24 +1657,24 @@ __d(
         r = a.scale,
         s = a.stickerData;
       a = a.textOverlays;
-      var t = m(!1),
+      var t = useState(!1),
         u = t[0],
         v = t[1],
-        w = l(null),
-        x = l(null);
-      t = m(null);
+        w = useRef(null),
+        x = useRef(null);
+      t = useState(null);
       var y = t[0],
         z = t[1];
-      t = m(null);
+      t = useState(null);
       var A = t[0],
         B = t[1],
-        C = l([]),
-        D = l(null);
-      t = l(null);
-      var E = l(null),
-        F = l(2),
-        G = l(null),
-        H = l(0.2),
+        C = useRef([]),
+        D = useRef(null);
+      t = useRef(null);
+      var E = useRef(null),
+        F = useRef(2),
+        G = useRef(null),
+        H = useRef(0.2),
         I = null;
       f = d('RelayHooks').useFragment(ea, f);
       f = Boolean(f == null ? void 0 : f.stories_create_sticker_button_render);
@@ -1691,15 +1691,15 @@ __d(
             'StoriesCreateStickersRoot.react',
           ).__setRef('StoriesCreatePhotoPreview.react'),
         ));
-      f = j(function (a, b) {
+      f = useCallback(function (a, b) {
         z(b.getBoundingClientRect());
       }, []);
       s = c('useResizeObserver')(f);
       K = c('useMergeRefs')(w, s);
-      J = j(function (a, b) {
+      J = useCallback(function (a, b) {
         B(b.getBoundingClientRect());
       }, []);
-      f = ca(
+      f = useMemo(
         function () {
           return { overlayRect: A };
         },
@@ -1708,14 +1708,14 @@ __d(
       s = c('useResizeObserver')(J);
       J = c('useMergeRefs')(x, s);
       s = g != null;
-      var L = ba(c('StoriesCreateViewStateDispatcherContext')),
+      var L = useContext(c('StoriesCreateViewStateDispatcherContext')),
         M = (a == null ? void 0 : a.editingID) != null,
         N = d('StoriesCreateConstants').PHOTO_PREVIEW_DIMENSIONS.FOOTER_HEIGHT,
         O = d('StoriesCreateConstants').PHOTO_PREVIEW_DIMENSIONS.HEADER_HEIGHT,
         P = c('useStoriesCreatePhotoFrame')(),
         Q = P.border,
         R = P.frameWidth;
-      P = j(
+      P = useCallback(
         function () {
           if (p == null || (p == null ? void 0 : p.current) == null) return;
           var a = p == null ? void 0 : p.current;
@@ -1724,7 +1724,7 @@ __d(
         [p],
       );
       var S = c('useThrottled')(P, 100);
-      k(
+      useEffect(
         function () {
           window.addEventListener('resize', S);
           return function () {
@@ -1733,7 +1733,7 @@ __d(
         },
         [S],
       );
-      k(
+      useEffect(
         function () {
           c('QPLUserFlow').addPoint(
             c('qpl')._(13250512, '1219'),
@@ -1754,19 +1754,19 @@ __d(
       b = P.keyCommands;
       var fa = P.onBlur,
         ga = P.onPressDown;
-      k(
+      useEffect(
         function () {
           L({ dx: T, dy: U, type: 'photo_update_offset' });
         },
         [L, T, U],
       );
-      var V = j(
+      var V = useCallback(
         function (a) {
           L({ type: 'photo_update_scale', value: a });
         },
         [L],
       );
-      k(
+      useEffect(
         function () {
           var a;
           z((a = w.current) == null ? void 0 : a.getBoundingClientRect());
@@ -1776,14 +1776,14 @@ __d(
       );
       c('useStoriesCreatePhotoPreviewBounds')(q, y, A);
       var W = d('Locale').isRTL();
-      k(
+      useEffect(
         function () {
           var a = G.current;
           a != null && (W || (a.scrollLeft = 0), (a.scrollTop = 0));
         },
         [u, W],
       );
-      P = j(
+      P = useCallback(
         function (a) {
           L({ type: 'photo_update_uri', value: null }),
             (D.current = null),
@@ -1791,14 +1791,14 @@ __d(
         },
         [L],
       );
-      y = j(
+      y = useCallback(
         function (a) {
           if (C.current.includes(a)) return;
           L({ type: 'photo_update_uri', value: a });
         },
         [L],
       );
-      k(
+      useEffect(
         function () {
           var a = w.current;
           if (

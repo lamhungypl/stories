@@ -61,21 +61,22 @@ __d(
       };
 
       const w = h._('__JHASH__9DT-GKeb6DV__JHASH__');
-      let x = null;
-      let y;
+      let headline = null;
+      let panelLabel;
       hasResponsiveToggle_
         ? (a &&
-            (x =
+            (headline =
               defaultLayoutState === 'desktop'
                 ? h._('__JHASH__Lxm3h66S5k7__JHASH__')
                 : h._('__JHASH__7qRiWGSoFH9__JHASH__')),
-          (y =
+          (panelLabel =
             defaultLayoutState === 'desktop'
               ? h._('__JHASH__Fa9U8v3v8N2__JHASH__')
               : h._('__JHASH__84elDPcigJr__JHASH__')))
-        : ((y = h._('__JHASH__xPMbXXmZbS___JHASH__')), (x = a ? y : null));
+        : ((panelLabel = h._('__JHASH__xPMbXXmZbS___JHASH__')),
+          (headline = a ? panelLabel : null));
       return React.jsxs('div', {
-        'aria-label': y,
+        'aria-label': panelLabel,
         className: `x1jx94hy x1lq5wgf xgqcy7u x30kzoy x9jhf4c x10h3on x9f619 x78zum5 xdt5ytf x1iyjqo2 xs83m0k x5yr21d xqmxbcd x1iymm2a xmupa6y xqnzamk x2lwn1j${
           (!d('CometGlobalPanelGating').isGlobalPanelVisible() && isPushView
             ? ' x1uw4saw'
@@ -87,17 +88,17 @@ __d(
           React.jsxs('div', {
             className: 'x6s0dn4 x78zum5 xl56j7k',
             children: [
-              x &&
+              headline &&
                 React.jsx('div', {
                   className: 'x1r8uery x1iyjqo2 xs83m0k',
                   children: React.jsx(c('CometUnitHeader.react'), {
-                    headline: x,
+                    headline: headline,
                     level: 4,
                   }),
                 }),
               g &&
                 React.jsx('div', {
-                  className: `xw7yly9${x ? '' : ' x1d52u69'}`,
+                  className: `xw7yly9${headline ? '' : ' x1d52u69'}`,
                   children: g,
                 }),
               hasResponsiveToggle_ &&
