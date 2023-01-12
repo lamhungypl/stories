@@ -1,19 +1,20 @@
 const fs = require('fs');
 const readline = require('readline');
 
-const fileName = 'src/chunks/eiVp7k/eiVp7kl1laS.js.txt';
-
 const rl = readline.createInterface({
-  input: fs.createReadStream(fileName),
+  input: fs.createReadStream('src/chunks/someChunk2/someChunk2.js.txt'),
   crlfDelay: Infinity,
 });
 
 rl.on('line', (content) => {
-  const reg = /__d\("([\w|\.]*)",/;
+  const reg = /__d\("([\w|\.|$|\d|\-|\/]*)",/;
+  if (!content.match(reg)) {
+    console.log(content);
+  }
   const key = content.match(reg).at(1);
 
   fs.writeFileSync(
-    `./src/chunks/eiVp7k/chunk_${encodeURIComponent(key)}.js`,
+    `./src/chunks/someChunk2/chunk_${encodeURIComponent(key)}.js`,
     content,
     {
       flag: 'w+',
