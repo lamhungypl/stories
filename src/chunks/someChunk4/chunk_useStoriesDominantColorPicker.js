@@ -4,39 +4,66 @@ __d(
   function (a, b, c, d, e, f, g) {
     'use strict';
     b = d('react');
-    var h = b.useEffect,
-      i = b.useState,
-      j = 100;
-    function a(a) {
-      var b = a.defaultBottomColor,
-        d = a.defaultTopColor,
-        e = a.imageURL;
-      a = i({ bottomColor: b ? k(b) : '', topColor: d ? k(d) : '' });
-      b = a[0];
-      var f = a[1];
-      h(
+    var useEffect = b.useEffect;
+    var useState = b.useState;
+    var j = 100;
+    function useStoriesDominantColorPicker(props) {
+      var defaultBottomColor = props.defaultBottomColor;
+      var defaultTopColor = props.defaultTopColor;
+      var imageURL = useColor.imageURL;
+      let useColor = useState({
+        bottomColor: defaultBottomColor ? colorToRGB(defaultBottomColor) : '',
+        topColor: defaultTopColor ? colorToRGB(defaultTopColor) : '',
+      });
+      let stateColor = useColor[0];
+      var setColor = useColor[1];
+
+      useEffect(
         function () {
-          if (e == null) return;
-          var a = new Image();
-          a.crossOrigin = 'Anonymous';
-          a.onload = function () {
-            var b = document.createElement('canvas'),
-              d = a.width,
-              e = a.height,
-              g = d / e,
-              h = Math.min(Math.max(d, e), j);
-            (d > h || e > h) &&
-              (d > e ? ((d = h), (e = d / g)) : ((e = h), (d = e * g)));
-            b.width = d;
-            b.height = e;
-            h = b.getContext('2d');
-            h.drawImage(a, 0, 0, d, e);
+          if (imageURL == null) return;
+          let image = new Image();
+          image.crossOrigin = 'Anonymous';
+          image.onload = function () {
+            let canvasNode = document.createElement('canvas');
+            let width = image.width;
+            let height = image.height;
+            let ratio = width / height;
+            let dimension = Math.min(Math.max(width, height), j);
+
+            if (width > dimension || height > dimension) {
+              if (width > height) {
+                width = dimension;
+                height = width / ratio;
+              } else {
+                height = dimension;
+                width = height * ratio;
+              }
+            }
+
+            canvasNode.width = width;
+            canvasNode.height = height;
+
+            let context2DNode = canvasNode.getContext('2d');
+            context2DNode.drawImage(image, 0, 0, width, height);
             try {
-              g = h.getImageData(0, 0, d, Math.max(1, e * 0.05));
-              b = h.getImageData(0, e - e * 0.05, d, Math.max(1, e * 0.05));
-              h = c('storiesDominantColorPicker')(g.data);
-              d = c('storiesDominantColorPicker')(b.data);
-              f({ bottomColor: k(d[0]), topColor: k(h[0]) });
+              let g = context2DNode.getImageData(
+                0,
+                0,
+                width,
+                Math.max(1, height * 0.05),
+              );
+              let b = context2DNode.getImageData(
+                0,
+                height - height * 0.05,
+                width,
+                Math.max(1, height * 0.05),
+              );
+              let h = c('storiesDominantColorPicker')(g.data);
+              let d = c('storiesDominantColorPicker')(b.data);
+              setColor({
+                bottomColor: colorToRGB(d[0]),
+                topColor: colorToRGB(h[0]),
+              });
             } catch (a) {
               c('recoverableViolation')(
                 'Stories Create Dominant Color Bg throws exception',
@@ -45,27 +72,20 @@ __d(
               );
             }
           };
-          a.src = e;
+          image.src = imageURL;
           return function () {
-            a.onload = null;
+            image.onload = null;
           };
         },
-        [e],
+        [imageURL],
       );
-      return b;
+      return stateColor;
     }
-    function k(a) {
-      return (
-        'rgb(\n    ' +
-        Math.round(a.red) +
-        ',\n    ' +
-        Math.round(a.green) +
-        ',\n    ' +
-        Math.round(a.blue) +
-        ')'
-      );
-    }
-    g['default'] = a;
+    const colorToRGB = (color) => {
+      return `rgb(${color.red},${color.green}, ${color.blue})`;
+    };
+
+    g['default'] = useStoriesDominantColorPicker;
   },
   98,
 );
