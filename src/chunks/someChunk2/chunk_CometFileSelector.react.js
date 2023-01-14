@@ -1,15 +1,18 @@
 __d(
   'CometFileSelector.react',
+
   ['react', 'recoverableViolation'],
+
   function (a, b, c, d, e, f, g) {
     'use strict';
     var h = d('react');
     b = d('react');
-    var i = b.useCallback,
-      j = b.useEffect,
-      k = b.useRef;
-    function l(a) {
-      return a
+    var useCallback = b.useCallback,
+      useEffect = b.useEffect,
+      useRef = b.useRef;
+
+    function filesAcceptors(files) {
+      return files
         .map(function (a) {
           if (a.indexOf('/') !== -1 || a[0] === '.') return a;
           c('recoverableViolation')(
@@ -22,41 +25,47 @@ __d(
         })
         .join(',');
     }
-    function a(a) {
-      var b = a.accept,
-        c = a.children,
-        d = a.multiple;
-      d = d === void 0 ? !1 : d;
+
+    function Component(a) {
+      var b = a.accept;
+      let c = a.children;
+      let multiple = a.multiple;
+      multiple = multiple === void 0 ? !1 : multiple;
       var e = a.onFilesSelected,
-        f = k(null);
-      j(function () {
+        f = useRef(null);
+
+      useEffect(function () {
         var a = f.current;
         if (a != null) {
-          var b = function (a) {
-            a.stopPropagation();
+          let clickEventHandler = function (event) {
+            event.stopPropagation();
           };
-          a.addEventListener('click', b);
+          a.addEventListener('click', clickEventHandler);
+
           return function () {
-            a.removeEventListener('click', b);
+            a.removeEventListener('click', clickEventHandler);
           };
         }
       });
-      a = i(function () {
+
+      let a = useCallback(function () {
         f.current != null && f.current.click();
       }, []);
-      var g = i(
+
+      let onChange = useCallback(
         function (a) {
           e(a.currentTarget.files), (a.currentTarget.value = '');
         },
         [e],
       );
-      b = h.jsxs(h.Fragment, {
+
+      let b = h.jsxs(h.Fragment, {
         children: [
           h.jsx('input', {
-            accept: b != null ? l(b) : void 0,
+            accept: b != null ? filesAcceptors(b) : void 0,
             className: 'x1s85apg',
-            multiple: d,
-            onChange: g,
+            multiple: multiple,
+            onChange: onChange,
             ref: f,
             type: 'file',
           }),
@@ -65,7 +74,7 @@ __d(
       });
       return b;
     }
-    g['default'] = a;
+    g['default'] = Component;
   },
   98,
 );
