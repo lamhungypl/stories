@@ -77,7 +77,7 @@ __d(
       a,
       function (a) {
         return {
-          displayedURI: (a = a.photoData) == null ? void 0 : a.displayedURI,
+          displayedURI: a.photoData?.displayedURI,
         };
       },
     );

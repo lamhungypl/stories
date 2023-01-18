@@ -1,0 +1,12 @@
+{
+  "translations": {
+    "2dP-S2NXGWo": "Bạn có chắc chắn muốn bỏ tin này không? Hệ thống sẽ không lưu tin của bạn.",
+    "iNbID4Of76-": "Tiếp tục chỉnh sửa",
+    "2bGTq0Hn_zL": "Bỏ",
+    "fy6v2Hc0_3x": "Bỏ tin?",
+    "b-5wJWOv0zU": "Bắt đầu nhập"
+  },
+  "virtual_modules": [
+    "StoriesCreateConstants$fbt_virtual"
+  ]
+}

@@ -3,7 +3,7 @@ __d(
   ['uuid'],
   function (a, b, c, d, e, f, g) {
     'use strict';
-    function a() {
+    function getStoriesCreateInitialState() {
       return {
         composerSessionID: c('uuid')(),
         ctaLinkData: {
@@ -48,7 +48,7 @@ __d(
         },
       };
     }
-    g.getStoriesCreateInitialState = a;
+    g.getStoriesCreateInitialState = getStoriesCreateInitialState;
   },
   98,
 );

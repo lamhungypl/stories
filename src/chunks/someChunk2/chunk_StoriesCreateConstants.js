@@ -5,10 +5,10 @@ __d(
     'use strict';
     a = {
       DEFAULT: {
-        BODY: h._('__JHASH__2dP-S2NXGWo__JHASH__'),
-        CANCEL: h._('__JHASH__iNbID4Of76-__JHASH__'),
-        CONFIRM: h._('__JHASH__2bGTq0Hn_zL__JHASH__'),
-        TITLE: h._('__JHASH__fy6v2Hc0_3x__JHASH__'),
+        BODY: 'Bạn có chắc chắn muốn bỏ tin này không? Hệ thống sẽ không lưu tin của bạn.',
+        CANCEL: 'Tiếp tục chỉnh sửa',
+        CONFIRM: 'Bỏ',
+        TITLE: 'Bỏ tin?',
       },
     };
     b = {
@@ -28,7 +28,7 @@ __d(
       MAX_OVERLAY_WIDTH: 472.5,
       SIDE_PANE_WIDTH: 360,
     };
-    e = h._('__JHASH__b-5wJWOv0zU__JHASH__');
+    e = 'Bắt đầu nhập';
     f = { FOOTER_HEIGHT: 12, HEADER_HEIGHT: 12 };
     h = { EDITING: 'editing', NONE: 'none' };
     var i = { EMOJI: 'emoji', LOCATION: 'location', POLL: 'poll', TAG: 'tag' },
