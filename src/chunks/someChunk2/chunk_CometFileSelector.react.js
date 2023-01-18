@@ -27,7 +27,7 @@ __d(
     }
 
     function Component(a) {
-      var b = a.accept;
+      let accept = a.accept;
       let c = a.children;
       let multiple = a.multiple;
       multiple = multiple === void 0 ? !1 : multiple;
@@ -62,7 +62,7 @@ __d(
       let b = h.jsxs(h.Fragment, {
         children: [
           h.jsx('input', {
-            accept: b != null ? filesAcceptors(b) : void 0,
+            accept: accept != null ? filesAcceptors(accept) : void 0,
             className: 'x1s85apg',
             multiple: multiple,
             onChange: onChange,
