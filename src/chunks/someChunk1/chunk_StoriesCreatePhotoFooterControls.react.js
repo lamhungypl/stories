@@ -14,38 +14,49 @@ __d(
   ],
   function (a, b, c, d, e, f, g, h, i) {
     'use strict';
-    var j = d('react');
+    let j = d('react');
     b = d('react');
-    var k = b.useContext,
-      l = b.useRef;
-    function a(a) {
-      var b = a.frameWidth,
-        e = a.maxScale,
-        f = a.minScale,
-        g = a.scale,
-        m = k(c('StoriesCreateViewStateDispatcherContext'));
-      a = d('fbicon')._(i('531490'), 16);
-      var n = d('fbicon')._(i('483768'), 16);
-      b = Math.floor(0.8 * b);
-      var o = l(null),
-        p = function (a) {
-          m({ type: 'photo_update_scale', value: a });
-        },
-        q = function (a) {
-          p(Math.min(Math.max(a, f), e));
-        },
-        r = function (a) {
-          window.clearInterval(o.current);
-          var b = g + a;
-          o.current = window.setInterval(function () {
-            (b += a), q(b);
-          }, 150);
-        },
-        s = function (a) {
-          window.clearInterval(o.current);
-          a = g + a;
-          q(a);
-        };
+    let useContext = b.useContext,
+      useRef = b.useRef;
+
+    function Component(a) {
+      let b = a.frameWidth;
+      let e = a.maxScale;
+      let f = a.minScale;
+      let g = a.scale;
+      let storiesCreateViewStateDispatcher = useContext(
+        c('StoriesCreateViewStateDispatcherContext'),
+      );
+      let a = d('fbicon')._(i('531490'), 16);
+      let n = d('fbicon')._(i('483768'), 16);
+      let b = Math.floor(0.8 * b);
+
+      let o = useRef(null);
+      let handlePhotoUpdateScale = function (a) {
+        storiesCreateViewStateDispatcher({
+          type: 'photo_update_scale',
+          value: a,
+        });
+      };
+
+      let q = function (a) {
+        handlePhotoUpdateScale(Math.min(Math.max(a, f), e));
+      };
+
+      let r = function (a) {
+        window.clearInterval(o.current);
+        let b = g + a;
+        o.current = window.setInterval(function () {
+          (b += a), q(b);
+        }, 150);
+      };
+
+      let s = function (a) {
+        window.clearInterval(o.current);
+        a = g + a;
+        q(a);
+      };
+
       return j.jsxs('div', {
         className: 'x6s0dn4 x78zum5',
         children: [
@@ -77,7 +88,7 @@ __d(
               max: e,
               min: f,
               onChange: function (a) {
-                p(a);
+                handlePhotoUpdateScale(a);
               },
               step: 0.01,
               value: g,
@@ -107,7 +118,7 @@ __d(
         ],
       });
     }
-    a.displayName = a.name + ' [from ' + f.id + ']';
+    Component.displayName = Component.name + ' [from ' + f.id + ']';
     e = c('withStoriesCreateViewStatePart')(a, function (a) {
       return {
         scale:

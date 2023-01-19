@@ -189,7 +189,7 @@ __d(
       });
       return null;
     }
-    function A(a) {
+    function HeroPlaceholder(a) {
       var c = a.children,
         d = a.fallback,
         e = a.name,
@@ -242,7 +242,7 @@ __d(
         a,
       );
     }
-    A.displayName = 'HeroPlaceholder';
+    HeroPlaceholder.displayName = 'HeroPlaceholder';
     f.HeroComponent = a;
     f.HeroCurrentInteractionForLoggingContext = m;
     f.HeroHoldTrigger = c;
@@ -250,7 +250,7 @@ __d(
     f.HeroInteractionContextPassthrough = d;
     f.HeroInteractionIDContext = l;
     f.HeroPendingPlaceholderTracker = e;
-    f.HeroPlaceholder = A;
+    f.HeroPlaceholder = HeroPlaceholder;
     f.HeroPlaceholderUtils = q;
   },
   null,
