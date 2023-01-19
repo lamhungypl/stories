@@ -1,41 +1,31 @@
 __d(
   'BaseAspectRatioContainer.react',
   ['react', 'stylex', 'unrecoverableViolation'],
-  function (Component, b, c, d, e, f, g) {
+  function (a, b, c, d, e, f, g) {
     'use strict';
-    let react = d('react');
-
-    function Component(a) {
-      var aspectRatio = a.aspectRatio;
-      let children = a.children;
-      let contentStyle = a.contentStyle;
-      let style = a.style;
-      let g = a.testid;
-      let xstyle = a.xstyle;
-
-      if (aspectRatio <= 0)
+    var h = d('react');
+    function a(a) {
+      var b = a.aspectRatio,
+        d = a.children,
+        e = a.contentStyle,
+        f = a.style,
+        g = a.testid;
+      g = a.xstyle;
+      if (b <= 0)
         throw c('unrecoverableViolation')(
-          'Aspect ratio must be a non-zero, positive number: ' + aspectRatio,
+          'Aspect ratio must be a non-zero, positive number: ' + b,
           'comet_ui',
         );
-
-      return react.jsx('div', {
-        className: c('stylex')(i.container, xstyle),
+      return h.jsx('div', {
+        className: c('stylex')(i.container, g),
         'data-testid': void 0,
-        style: babelHelpers['extends']({}, style, {
-          paddingTop: 100 / aspectRatio + '%',
-        }),
+        style: babelHelpers['extends']({}, f, { paddingTop: 100 / b + '%' }),
         children:
-          children != null &&
-          react.jsx('div', {
-            className: c('stylex')(i.content, contentStyle),
-            children: children,
-          }),
+          d != null &&
+          h.jsx('div', { className: c('stylex')(i.content, e), children: d }),
       });
     }
-
-    Component.displayName = Component.name + ' [from ' + f.id + ']';
-
+    a.displayName = a.name + ' [from ' + f.id + ']';
     var i = {
       container: {
         height: 'xqtp20y',
@@ -78,7 +68,7 @@ __d(
         $$css: !0,
       },
     };
-    g['default'] = Component;
+    g['default'] = a;
   },
   98,
 );

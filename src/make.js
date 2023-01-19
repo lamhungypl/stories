@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 
 rl.on('line', (content) => {
   const reg = /__d\("([\w|\.|$|\d|\-|\/]*)",/;
-  if (!content.match(reg)) {
+  if (!content.match(reg) || content.length === 0) {
     console.log(content);
   }
   const key = content.match(reg).at(1);
