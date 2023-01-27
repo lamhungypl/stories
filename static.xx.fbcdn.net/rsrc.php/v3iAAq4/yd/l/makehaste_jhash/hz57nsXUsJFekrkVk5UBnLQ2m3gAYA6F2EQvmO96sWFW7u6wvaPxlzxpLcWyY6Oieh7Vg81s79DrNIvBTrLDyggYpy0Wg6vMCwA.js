@@ -9794,14 +9794,12 @@ __d(
               next: function (c) {
                 try {
                   d.closed ||
-                    a
-                      .from(b(c))
-                      .subscribe({
-                        start: f,
-                        next: d.next,
-                        error: d.error,
-                        complete: g,
-                      });
+                    a.from(b(c)).subscribe({
+                      start: f,
+                      next: d.next,
+                      error: d.error,
+                      complete: g,
+                    });
                 } catch (a) {
                   d.error(a, !0);
                 }
@@ -15464,16 +15462,14 @@ __d(
         (d || e) && (h = { operation: c, response: d, updater: e });
         return this.$17({
           createSource: function () {
-            return b
-              .getNetwork()
-              .execute(
-                c.request.node.params,
-                c.request.variables,
-                babelHelpers['extends']({}, c.request.cacheConfig, {
-                  force: !0,
-                }),
-                g,
-              );
+            return b.getNetwork().execute(
+              c.request.node.params,
+              c.request.variables,
+              babelHelpers['extends']({}, c.request.cacheConfig, {
+                force: !0,
+              }),
+              g,
+            );
           },
           isClientPayload: !1,
           operation: c,
@@ -21694,17 +21690,15 @@ __d(
                 (t.fb_api_analytics_tags = JSON.stringify(i));
               g != null
                 ? k.setRawData(o(g, t))
-                : k
-                    .setData(t)
-                    .setRequestHeaders(
-                      babelHelpers['extends'](
-                        {
-                          'Content-Type': 'application/x-www-form-urlencoded',
-                          'X-FB-Friendly-Name': e.name,
-                        },
-                        d,
-                      ),
-                    );
+                : k.setData(t).setRequestHeaders(
+                    babelHelpers['extends'](
+                      {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-FB-Friendly-Name': e.name,
+                      },
+                      d,
+                    ),
+                  );
               return k.send().abort;
             },
           });
@@ -27313,20 +27307,23 @@ __d(
       i = d('react').useContext,
       j = { hideOutline: { outline: 'x1a2a7pz', $$css: !0 } },
       k = h.createContext(!1);
-    function a(a, b) {
-      var d = a.children,
-        e = a.disableLoadingStateTracker;
-      e = e === void 0 ? !1 : e;
-      var f = a.isFocusTarget,
-        g = a.progress,
-        l = a.style,
-        m = a.testid;
-      m = a.xstyle;
-      a = i(k);
-      var n = c('useCometLoadingStateTracker')(),
-        o = n[0];
-      n = n[1];
-      n = c('useMergeRefs')(b, n);
+
+
+     function Component(a, b) {
+      let d = a.children;
+      let e = a.disableLoadingStateTracker;
+      let e = e === void 0 ? !1 : e;
+      let f = a.isFocusTarget;
+      let g = a.progress;
+      let l = a.style;
+      let m = a.testid;
+      let m = a.xstyle;
+      let a = i(k);
+      let n = c('useCometLoadingStateTracker')();
+      let o = n[0];
+      let n = n[1];
+      let n = c('useMergeRefs')(b, n);
+
       if (a)
         return h.jsx('div', {
           className: c('stylex')(m),
@@ -27335,7 +27332,8 @@ __d(
           style: l,
           children: d,
         });
-      a = c('getLoadingStateAriaProps')(g, { max: 100, min: 0 });
+      let a = c('getLoadingStateAriaProps')(g, { max: 100, min: 0 });
+
       return h.jsx(k.Provider, {
         value: !0,
         children: h.jsx(
@@ -27351,7 +27349,8 @@ __d(
         ),
       });
     }
-    a.displayName = a.name + ' [from ' + f.id + ']';
+
+    Component.displayName = a.name + ' [from ' + f.id + ']';
     b = h.forwardRef(a);
     g['default'] = b;
   },
@@ -52711,16 +52710,14 @@ __d(
         (d || e) && (h = { operation: c, response: d, updater: e });
         return this.$21(a, {
           createSource: function () {
-            return a
-              .getNetwork()
-              .execute(
-                c.request.node.params,
-                c.request.variables,
-                babelHelpers['extends']({}, c.request.cacheConfig, {
-                  force: !0,
-                }),
-                g,
-              );
+            return a.getNetwork().execute(
+              c.request.node.params,
+              c.request.variables,
+              babelHelpers['extends']({}, c.request.cacheConfig, {
+                force: !0,
+              }),
+              g,
+            );
           },
           isClientPayload: !1,
           operation: c,

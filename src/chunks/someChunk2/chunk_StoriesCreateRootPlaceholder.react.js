@@ -15,7 +15,7 @@ __d(
   ],
   function (a, b, c, d, e, f, g, h) {
     'use strict';
-    var i = d('react'),
+    let i = d('react'),
       j = {
         pickerContainer: {
           display: 'x78zum5',
@@ -41,15 +41,15 @@ __d(
           $$css: !0,
         },
       };
-    function a() {
-      var a = d('StoriesCreateConstants').NULL_STATE_DIMENSIONS
-          .SELECTION_TILE_HEIGHT,
-        b = d('StoriesCreateConstants').NULL_STATE_DIMENSIONS
-          .SELECTION_TILE_WIDTH,
-        e = d('StoriesCreateConstants').NULL_STATE_DIMENSIONS
-          .SPACE_BETWEEN_SELECTOR;
-      a = { height: a, width: b };
-      b = i.jsxs('div', {
+    function Component() {
+      let a = d('StoriesCreateConstants').NULL_STATE_DIMENSIONS
+        .SELECTION_TILE_HEIGHT;
+      let b = d('StoriesCreateConstants').NULL_STATE_DIMENSIONS
+        .SELECTION_TILE_WIDTH;
+      let e = d('StoriesCreateConstants').NULL_STATE_DIMENSIONS
+        .SPACE_BETWEEN_SELECTOR;
+      let a = { height: a, width: b };
+      let b = i.jsxs('div', {
         className: 'x78zum5 x1qughib',
         style: { width: 2 * b + e },
         children: [
@@ -105,7 +105,7 @@ __d(
         mainContentHeading: e,
       });
     }
-    a.displayName = a.name + ' [from ' + f.id + ']';
+    Component.displayName = Component.name + ' [from ' + f.id + ']';
     g['default'] = a;
   },
   98,
