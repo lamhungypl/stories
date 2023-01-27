@@ -258,16 +258,14 @@ __d(
         (d || e) && (h = { operation: c, response: d, updater: e });
         return this.$17({
           createSource: function () {
-            return b
-              .getNetwork()
-              .execute(
-                c.request.node.params,
-                c.request.variables,
-                babelHelpers['extends']({}, c.request.cacheConfig, {
-                  force: !0,
-                }),
-                g,
-              );
+            return b.getNetwork().execute(
+              c.request.node.params,
+              c.request.variables,
+              babelHelpers['extends']({}, c.request.cacheConfig, {
+                force: !0,
+              }),
+              g,
+            );
           },
           isClientPayload: !1,
           operation: c,

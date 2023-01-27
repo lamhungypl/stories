@@ -525,17 +525,15 @@ __d(
                 (t.fb_api_analytics_tags = JSON.stringify(i));
               g != null
                 ? k.setRawData(o(g, t))
-                : k
-                    .setData(t)
-                    .setRequestHeaders(
-                      babelHelpers['extends'](
-                        {
-                          'Content-Type': 'application/x-www-form-urlencoded',
-                          'X-FB-Friendly-Name': e.name,
-                        },
-                        d,
-                      ),
-                    );
+                : k.setData(t).setRequestHeaders(
+                    babelHelpers['extends'](
+                      {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-FB-Friendly-Name': e.name,
+                      },
+                      d,
+                    ),
+                  );
               return k.send().abort;
             },
           });

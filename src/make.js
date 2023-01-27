@@ -2,7 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
 
 const rl = readline.createInterface({
-  input: fs.createReadStream('src/chunks/someChunk5/someChunk5.js.txt'),
+  input: fs.createReadStream('src/chunks/someChunk6/someChunk6.js.txt'),
   crlfDelay: Infinity,
 });
 
@@ -14,7 +14,7 @@ rl.on('line', (content) => {
   const key = content.match(reg).at(1);
 
   fs.writeFileSync(
-    `./src/chunks/someChunk5/chunk_${encodeURIComponent(key)}.js`,
+    `./src/chunks/someChunk6/chunk_${encodeURIComponent(key)}.js`,
     content,
     {
       flag: 'w+',

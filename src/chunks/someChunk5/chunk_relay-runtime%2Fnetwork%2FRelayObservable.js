@@ -158,14 +158,12 @@ __d(
               next: function (c) {
                 try {
                   d.closed ||
-                    a
-                      .from(b(c))
-                      .subscribe({
-                        start: f,
-                        next: d.next,
-                        error: d.error,
-                        complete: g,
-                      });
+                    a.from(b(c)).subscribe({
+                      start: f,
+                      next: d.next,
+                      error: d.error,
+                      complete: g,
+                    });
                 } catch (a) {
                   d.error(a, !0);
                 }

@@ -1,0 +1,58 @@
+__d(
+  'CometPreludeCritical',
+  [
+    'Bootloader',
+    'CometPreludeCriticalRequireConds',
+    'CometResourceScheduler',
+    'CometSSRFizzContentInjector',
+    'CometSSRReactArrMethods',
+    'DeferredJSResourceScheduler',
+    'Env',
+    'HasteResponse',
+    'HasteSupportData',
+    'JSScheduler',
+    'ReactDOMServerExternalRuntime',
+    'Run',
+    'ScheduledApplyEach',
+    'ScheduledServerJS',
+    'ScheduledServerJSDefine',
+    'ScheduledServerJSWithCSS',
+    'ServerJS',
+    'bootstrapWebSession',
+    'injectQPLTagsServerJSIntoWindow',
+    'injectQPLTimingsServerJSIntoWindow',
+    'maybeDisableAnimations',
+    'qplTagServerJS',
+    'qplTimingsServerJS',
+    'replaceNativeTimer',
+  ],
+  function (a, b, c, d, e, f) {
+    'use strict';
+    var g;
+    b('Bootloader');
+    b('CometPreludeCriticalRequireConds');
+    b('CometResourceScheduler');
+    b('DeferredJSResourceScheduler');
+    g || (g = b('Env'));
+    b('HasteResponse');
+    b('HasteSupportData');
+    b('JSScheduler');
+    b('Run');
+    b('ScheduledApplyEach');
+    b('ScheduledServerJS');
+    b('ScheduledServerJSWithCSS');
+    b('ScheduledServerJSDefine');
+    b('ServerJS');
+    b('bootstrapWebSession');
+    b('replaceNativeTimer');
+    b('qplTimingsServerJS');
+    b('qplTagServerJS');
+    b('injectQPLTagsServerJSIntoWindow');
+    b('injectQPLTimingsServerJSIntoWindow');
+    b('maybeDisableAnimations');
+    b('CometSSRFizzContentInjector');
+    b('CometSSRReactArrMethods');
+    b('ReactDOMServerExternalRuntime');
+  },
+  null,
+);
